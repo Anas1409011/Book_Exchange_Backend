@@ -26,3 +26,5 @@ Route::get('/edit_product/{product_id}', 'admincontroller@edit_product');
 Route::get('/insert_product', 'admincontroller@insert_product');
 Route::get('/save_product', 'admincontroller@save_product');
 Route::get('/update_product/{product_id}', 'admincontroller@update_product');
+
+Route::get('/admin/allusers/page1', 'admincontroller@allusers_page1');

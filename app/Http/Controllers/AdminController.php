@@ -18,8 +18,8 @@ class admincontroller extends Controller
     }
 
     public function allproducts_page1(){
-            $all_products = DB::table('stock_data')->offset(0)->limit(15)->get();
-            return view('admin.admin_all_products',['all_products'=>$all_products]);
+            $all_products = DB::table('books')->offset(0)->limit(15)->get();
+            return view('admin.all_products',['all_products'=>$all_products]);
     }
 
     public function allproducts_page2(){
@@ -79,5 +79,11 @@ class admincontroller extends Controller
      public function insert_product(){
             return view('admin.insert_product');
     }
+
+    public function allusers_page1(){
+            $all_products = DB::table('users')->offset(0)->limit(15)->get();
+            return view('admin.all_users',['all_products'=>$all_products]);
+    }
+
 
 }

@@ -1,4 +1,2 @@
 @extends('layouts.admin')
 
-//Me
-
