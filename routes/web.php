@@ -9,9 +9,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/', function () {
-//     return view('home');
-// });
+ Route::get('/', function () {
+     return view('welcome');
+ });
 //Admin-Routes
 Route::get('/admin', 'admincontroller@allproducts_page1');
 Route::get('/admin/allproducts/page1', 'admincontroller@allproducts_page1');
