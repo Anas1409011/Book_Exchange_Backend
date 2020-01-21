@@ -19,6 +19,11 @@ Route::get('/user', function () {
 });
 
 
+Route::post('/registration', 'UserController@user_registration');
+Route::get('/login', 'UserController@user_login');
+Route::get('/insert', 'ProductController@insert_product');
+
+
 Route::get('/alluser', function () {
     return UserResource::collection(User::all());
 });
