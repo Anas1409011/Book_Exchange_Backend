@@ -8,6 +8,8 @@
 @stop
 
 @section('content')
+	<?php $b= Session::get('admin_name'); echo "Welcome ".$b. " ,";?>
+	<br>
     <p>Welcome to this beautiful admin panel.</p>
     
 @stop

@@ -6,6 +6,8 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
+	<?php $b= Session::get('admin_name'); echo "Welcome ".$b. " ,";?>
+	<br>
     <p>Welcome to this beautiful admin panel.</p>
     
 <?php $__env->stopSection(); ?>

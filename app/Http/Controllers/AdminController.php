@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Redirect;
+use Session;
 
 class admincontroller extends Controller
 {
 
      public function dashboard(){
-            return view('admin.dashboard');
+            return view('welcome');
     }
 
      public function admin_login(){
@@ -62,28 +63,29 @@ class admincontroller extends Controller
      return Redirect::to('/admin/allproducts');
     }
 
-     public function save_product(Request $request){
-            $data=array();
-            $data['ItemName']=$request->ItemName;
-            $data['Type']=$request->Type;
-            $data['Brand']=$request->Brand;
-            $data['UnitPricePur']=$request->UnitPricePur;
-            $data['StockAmount']=$request->StockAmount;
-            $data['Balance']=$request->Balance;
-            $data['UnitPriceSell']=$request->UnitPriceSell;
-            $data['Image']=$request->Image;
-
-     DB::table('stock_data')->insert($data);
-     return Redirect::to('/admin/allproducts/page1');
-    }
-     public function insert_product(){
-            return view('admin.insert_product');
-    }
 
     public function allusers_page1(){
-            $all_products = DB::table('users')->offset(0)->limit(15)->get();
-            return view('admin.all_users',['all_products'=>$all_products]);
+        $all_products = DB::table('users')->offset(0)->limit(15)->get();
+        return view('admin.all_users',['all_products'=>$all_products]);
     }
 
+    public function admin_login_action(Request $request)
+    {
+        $admin_email=$request->admin_email;
+        $admin_password=$request->admin_password;
 
+        $result=DB::table('admin')->where('admin_email',$admin_email)
+        ->where('admin_password',$admin_password)
+        ->first();
+
+        if ($result) {
+            Session::put('admin_name',$result->admin_name);
+            return Redirect::to('/admin/dashboard');
+        }
+        else {
+            $message="Email or password is incorrect.";
+            Session::put('message',$message);
+                return Redirect::to('/admin_login');
+        }
+  }
 }
